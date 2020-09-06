@@ -21,7 +21,7 @@ module dual_rounded_cube(dimensions = [200, 150, 300], radius1 = 6, radius2 = 3,
     minkowski()  {
         minkowski() {
             translate([combined_radius, radius2, combined_radius]) {
-                cube([dimensions[0] - (combined_radius *  2) - 1, dimensions[1] - (radius2 * 2), dimensions[2] -  (combined_radius * 2)]);
+                cube([dimensions[0] - (combined_radius *  2), dimensions[1] - (radius2 * 2), dimensions[2] -  (combined_radius * 2)]);
             }
             rotate([270, 0, 0]) {
                 cylinder(r = radius1, h = 1, $fn = $fn);
@@ -43,6 +43,21 @@ module rounded_cube(dimensions = [200, 150, 300], radius = 3, $fn = 30) {
     };
 }
 
+
+
+// attempt to reproduce the inside curve beneath the face
+module inside_curve(width = 330, depth = 60, angle = 80, radius = 100) {
+    rotate([90, 0, 0])
+    rotate([0, 90, 0])
+    rotate_extrude(angle = 80, convexity = 2, $fn = 100)
+    
+        projection(cut = false)
+            translate([radius, 0, 0]) 
+                rotate([270, 0, 0])
+                    translate([0, 0, -width / 2])
+                        mono_rounded_cube(dimensions = [depth, 2, width],
+                                      radius = 9, $fn = 100);
+}
 
 // A sketch of a Macintosh Plus main body
 module plus_face(
@@ -72,6 +87,17 @@ module plus_face(
                             - (recess_taper * 2);
     inner_height        = screen_recess_dimensions[2]
                             - (recess_taper * 2);
+    
+    // neck measurements
+    neck_curve_radius = 10;
+    chin_depth = 20;
+    base_height = 40;
+
+    // Neck and chin
+    translate([0, 0, base_height]) inside_curve(width = face_width, radius = neck_curve_radius);
+    translate([-face_width / 2, 60 + neck_curve_radius, 0])
+        rotate([90,0,0])
+            mono_rounded_cube(dimensions = [face_width, base_height, 60], radius = 9, $fn = 100);
 
     // We draw a face as the difference between:
     // - 1) the convex hull of:
@@ -81,7 +107,9 @@ module plus_face(
     //   - a) a screen recess
     //   - b) a floppy drive cutout
     //   - c) a logo stamp
-    difference() {
+    rotate([-10, 0, 0])
+        translate([0, -chin_depth, neck_curve_radius + base_height - 0.5])
+            difference() {
         // the face itself
         hull() {
             translate([-face_width / 2, 5, 0]) {
