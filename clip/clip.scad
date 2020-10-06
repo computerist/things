@@ -1,14 +1,16 @@
-module clip(depth = 5) {
+default_depth = 7;
+
+module clip(depth = default_depth) {
     linear_extrude(height = depth)
         import("clip.dxf");
 }
 
-module cutout1(depth = 2.51) {
+module cutout1(depth = (default_depth / 2) + 0.01) {
     linear_extrude(height = depth)
         import("cutout1.dxf");
 }
 
-module cutout2(depth = 2.51) {
+module cutout2(depth = (default_depth / 2) + 0.01) {
     linear_extrude(height = depth)
         import("cutout2.dxf");
 }
@@ -16,7 +18,7 @@ module cutout2(depth = 2.51) {
 module cutout() {
     union() {
         translate([0, 0, -0.01]) cutout1();
-        translate([0, 0, 2.49]) cutout2();
+        translate([0, 0, default_depth / 2]) cutout2();
     }
 }
 

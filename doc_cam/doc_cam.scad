@@ -37,17 +37,18 @@ module hinge_outer(hinge_radius = 10, hinge_thickness = 5, peg_width = 22, peg_d
             translate([-(hinge_thickness + 0.3) / 2, -2 * (hinge_radius + 0.15), 0])
                 cube([(hinge_thickness + 0.3), (hinge_radius + 0.15), (hinge_radius + 0.15) * 2]);
             hinge_inner(hinge_radius + 0.15, hinge_thickness + 0.3);
-            translate(hinge_centre) cylinder(r = (hinge_radius / (3/2)) - 0.5, h = hinge_radius);
+            translate(hinge_centre) cylinder(r = (hinge_radius / (3/2)) - 0.5, h = hinge_radius, $fn = 50);
         }
     }
 }
 
 module mirror_piece(width = 50, height = 50, thickness = 2, hinge_thickness = 5, hinge_radius = 10) {
-    translate([-width / 2, -2, 0]) cube([width, height, thickness]);
+    translate([-width / 2, -1, 0]) cube([width, height, thickness]);
     hinge_inner(hinge_radius, hinge_thickness, plate_thickness = thickness, web = height / 2);
 }
 
-mirror_piece();
 
+
+mirror_piece(hinge_radius = 6, hinge_thickness = 4);
 translate([0, -21, 0])
-    hinge_outer();
+    hinge_outer(hinge_radius = 6, hinge_thickness = 4);
