@@ -4,7 +4,7 @@ plug_radius = 7.5;
 screw_radius = 2;
 plug_thickness = 2;
 
-module inner(screws = screws, plug_radius = plug_radius) {
+module inner(screws = screws, plug_radius = plug_radius, screw_radius = screw_radius) {
     difference() {
         hull() {
             cylinder(r = plug_radius + plug_thickness, h = plug_thickness);
@@ -21,21 +21,21 @@ module inner(screws = screws, plug_radius = plug_radius) {
     }
 }
 
-module outer(screws = screws, plug_radius = plug_radius) {
+module outer(screws = screws, plug_radius = plug_radius, screw_radius = screw_radius) {
     for (screw = screws) {
         echo(screw);
     }
 }
 
-module mould(crews = screws, plug_radius = plug_radius) {
+module mould(screws = screws, plug_radius = plug_radius, screw_radius = screw_radius) {
     difference() {
         minkowski() {
-            hull() inner();
+            hull() inner(screws = screws, plug_radius = plug_radius, screw_radius = screw_radius);
             cylinder (r = 3, h = 0.1);
         }
-        translate([0, 0, 1]) inner();
+        translate([0, 0, 1]) inner(screws = screws, plug_radius = plug_radius, screw_radius = screw_radius);
     }
     
 }
 
-mould();
+mould(screw_radius = 2);
