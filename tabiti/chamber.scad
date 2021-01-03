@@ -1,11 +1,11 @@
-module chamber(inner = 11.5, outer = 180, height = 100, thickness = 2, $fn = 30) {
+module chamber(inner = 11.5, outer = 100, height = 80, thickness = 1.5, $fn = 30) {
     difference() {
         cylinder(r = inner + thickness, h = height, $fn = $fn);
         cylinder(r = inner, h = height, $fn = $fn);
     }
     difference() {
-        cylinder(r1 = 100 + thickness, r2 = inner + thickness, h = height - thickness, $fn = $fn);
-        cylinder(r1 = 100, r2 = inner, h = height - thickness, $fn = $fn);
+        cylinder(r1 = 60 + thickness, r2 = inner + thickness, h = height - thickness, $fn = $fn);
+        cylinder(r1 = 60, r2 = inner, h = height - thickness, $fn = $fn);
     }
     difference() {
         cylinder(r = outer + thickness, h = height, $fn = $fn);
