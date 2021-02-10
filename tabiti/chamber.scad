@@ -37,9 +37,9 @@ module chamber(inner = 11.5, outer = 100, height = 80, thickness = 1.5, $fn = 10
         }
     } else {
         difference() {
-            translate([0, 0, height - thickness * 2]) cylinder(r = outer + (thickness * 2), h = (thickness * 3), $fn = $fn);
+            translate([0, 0, height - thickness * 3]) cylinder(r = pad + outer + (thickness * 2), h = (thickness * 4), $fn = $fn);
             union() {
-                chamber(inner = inner, outer = outer, height = height, thickness = thickness, $fn = $fn, base = true, pad = 0.5);
+                chamber(inner = inner, outer = outer, height = height, thickness = thickness, $fn = $fn, base = true, pad = pad);
                 for (angle = [0 : 60 : 360]) {
                     rotate([0, 0, angle]) {
                         translate([0, -1 * (outer - 5), 0]) cylinder(r = 2, h = height * 2);
@@ -51,4 +51,4 @@ module chamber(inner = 11.5, outer = 100, height = 80, thickness = 1.5, $fn = 10
     }
 }
 
-chamber($fn = 100, base = false);
+chamber($fn = 100, base = false, pad = 0.75);
