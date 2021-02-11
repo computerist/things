@@ -8,7 +8,7 @@ tube_inner_radius = 1.75;
 tube_outer_radius = 2.5;
 
 screw_radius = 2;
-plug_thickness = 3;
+plug_thickness = 5;
 
 $fn = 30;
 
@@ -52,7 +52,17 @@ module seal_mould(screws = screws, plug_max_radius = plug_max_radius, screw_radi
             hull() inner(screws = screws, plug_max_radius = plug_max_radius, screw_radius = screw_radius);
             cylinder (r = 3, h = 0.1);
         }
-        translate([0, 0, 1]) inner(screws = screws, plug_max_radius = plug_max_radius, screw_radius = screw_radius);
+        union() {
+            translate([0, 0, 3]) inner(screws = screws, plug_max_radius = plug_max_radius, screw_radius = screw_radius);
+            translate([0, 0, 1.5]) difference() {
+                minkowski() {
+                    hull() inner(screws = screws, plug_max_radius = plug_max_radius, screw_radius = screw_radius);
+                    cylinder (r = 1.5, h = 0.1);
+                   }
+
+                hull() inner(screws = screws, plug_max_radius = plug_max_radius, screw_radius = screw_radius);
+            }
+        }
     }
     
 }
@@ -90,5 +100,5 @@ module mould_base(screws = screws, plug_depth = plug_depth, plug_taper = plug_ta
     }
 }
 
-// seal_mould(screw_radius = 2);
-outer();
+seal_mould(screw_radius = 2);
+//outer();
