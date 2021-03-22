@@ -11,8 +11,8 @@ module mono_rounded_cube(dimensions = [200, 150, 300], radius = 3, $fn = 30) {
 
 difference() {
     union() {
-        translate([-6, -6, 0]) mono_rounded_cube(dimensions = [12,12,5], radius = 0.5);
-        translate([-6.2, -6.2, 0]) mono_rounded_cube(dimensions = [12.4, 12.4, 1.5], radius = 0.7);
+        translate([-6, -6, 0]) mono_rounded_cube(dimensions = [12,12,5], radius = 1.5);
+        translate([-6.2, -6.2, 0]) mono_rounded_cube(dimensions = [12.4, 12.4, 1.5], radius = 1.7);
     }
     union() {
         cylinder(r = 4, h = 2.5, $fn = 30);
