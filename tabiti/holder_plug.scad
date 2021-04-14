@@ -100,5 +100,7 @@ module mould_base(screws = screws, plug_depth = plug_depth, plug_taper = plug_ta
     }
 }
 
-seal_mould(screw_radius = 2);
+//seal_mould(screw_radius = 2);
 //outer();
+
+plug();

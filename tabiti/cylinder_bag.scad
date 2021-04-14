@@ -1,5 +1,5 @@
-$fn = 30;
-main_radius = 22.5;
+$fn = 200;
+main_radius = 20;
 thickness = 1;
 height = 75;
 

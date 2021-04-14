@@ -1,6 +1,8 @@
-$fn = 30;
+include<lego_hub.scad>
 
-main_radius = 22.5;
+$fn = 200;
+
+main_radius = 20;
 neck_radius = 8.5;
 main_height = 75;
 neck_height = 10;
@@ -36,5 +38,11 @@ module mould_lid(main_radius = main_radius, neck_radius = neck_radius) {
     cylinder(r = main_radius, h = 4, $fn = $fn);
 }
 
-airbag_mould(main_height = 60);
-// mould_lid();
+// airbag_mould(main_height = 60);
+difference() {
+    union() {
+        translate([0,0,5]) mould_lid();
+        cylinder(r1 = 6, r2 = main_radius, h = 5, $fn = $fn);
+    }
+    lego_spindle(height = 20);
+}

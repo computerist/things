@@ -1,9 +1,9 @@
-inner_radius = 25;
+inner_radius = 24;
 outer_radius = 27;
 thickness = 2;
 flange = 5;
 taper = outer_radius - inner_radius;
-$fn = 100;
+$fn = 200;
 
 module half_join(
     inner_radius = inner_radius,

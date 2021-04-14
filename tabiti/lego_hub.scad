@@ -1,5 +1,5 @@
-spindle_dia = 5;
-inner = 1.85;
+spindle_dia = 5.2;
+inner = 1.95;
 $fn = 100;
 
 
@@ -8,9 +8,7 @@ module spindle_piece (spindle_dia = spindle_dia, inner = inner, height) {
     intersection() {
         translate([-spindle_dia / 2, -inner / 2, 0]) cube([spindle_dia, inner, height]);
         cylinder(r = spindle_dia / 2, h = height, $fn = $fn);
-    }
-}
-
+    y
 module lego_spindle (height) {
     union() {
         spindle_piece (height = height);
@@ -25,5 +23,5 @@ module lego_hub (hub_dia = 7, height = 10) {
     }
 }
 
-lego_hub();
+//lego_hub();
 //spindle_piece(height = 10);
