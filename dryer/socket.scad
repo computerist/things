@@ -18,4 +18,12 @@ module socket(inner = 52 / 2, thickness = 1, height = 110, flange = 5, $fn = $fn
     }
 }
 
-socket();
+module base(inner = 52 / 2, thickness = 1, flange = 5, $fn = $fn) {
+    difference() {
+        cylinder(r = inner + (thickness * 2), h = flange);
+        translate([0, 0, thickness]) cylinder(r = inner + thickness, h = flange);
+
+    }
+}
+
+base();

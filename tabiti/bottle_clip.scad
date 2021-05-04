@@ -1,5 +1,5 @@
 min_clip = 89;
-max_clip = 105;
+max_clip = 105git;
 width = 55;
 spoke_dia = 2;
 h_thickness = 2;
