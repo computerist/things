@@ -8,7 +8,7 @@ rail_width = 2.55;
 flare_width = 3.9;
 flare_height = 0.82;
 
-rail_height = 2.22 - flare_height;
+rail_height = 2.4 - flare_height;
 
 module tooth() {
     hull() {
