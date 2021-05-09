@@ -3,9 +3,9 @@ tooth_base = 1.2;
 tooth_tip = 0.6;
 tooth_height = 3.16 - 2.22;
 length = 200;
-rail_width = 2.55;
+rail_width = 2.5;
 
-flare_width = 3.9;
+flare_width = 3.5;
 flare_height = 0.82;
 
 rail_height = 2.4 - flare_height;
