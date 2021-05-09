@@ -1,4 +1,4 @@
-pitch = 1.6135;
+pitch = 1.562;
 tooth_base = 1.2;
 tooth_tip = 0.6;
 tooth_height = 3.16 - 2.22;
