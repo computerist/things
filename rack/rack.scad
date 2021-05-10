@@ -6,7 +6,7 @@ tooth_height = 3.20 - 2.22;
 length = 200;
 rail_width = 2.5;
 
-flare_width = 3.5;
+flare_width = 3;
 flare_height = 0.82;
 
 rail_height = 2.4 - flare_height;
