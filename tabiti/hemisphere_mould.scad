@@ -42,5 +42,14 @@ module hemisphere_mould(inner = true, outer = true, extra = 5, flange = 10, radi
     }
 }
 
-hemisphere_mould(outer = false, radius = 30);
+difference() {
+    hemisphere_mould(outer = false, radius = 30);
+    union() {
+        sphere(r = 30 - 3, $fn = $fn);
+        translate([0,0, -3]) difference() {
+            cylinder(r = 35, h = 15, $fn = $fn);
+            cylinder(r = 33, h = 15, $fn = $fn);
+        }
+    }
+}
 //translate([0,0, 30]) hemisphere_mould(inner = false);
