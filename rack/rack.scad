@@ -2,14 +2,15 @@
 pitch = 200 / 128;
 tooth_base = 1.2;
 tooth_tip = 0.3;
-tooth_height = 3.20 - 2.22;
+tooth_bottom = 2;
+tooth_height = 3.20 - tooth_bottom;
 length = 200;
 rail_width = 2.5;
 
 flare_width = 3;
 flare_height = 0.82;
 
-rail_height = 2.4 - flare_height;
+rail_height = tooth_bottom - flare_height;
 
 module tooth() {
     hull() {
