@@ -1,7 +1,8 @@
-pitch = 1.562;
+// pitch = 1.562;
+pitch = 200 / 128;
 tooth_base = 1.2;
-tooth_tip = 0.6;
-tooth_height = 3.16 - 2.22;
+tooth_tip = 0.3;
+tooth_height = 3.20 - 2.22;
 length = 200;
 rail_width = 2.5;
 
