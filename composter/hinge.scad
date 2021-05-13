@@ -42,4 +42,4 @@ module hinge(hinge_length = hinge_length, door_thickness = door_thickness, pin_d
     }
 }
 
-hinge();
+hinge(offset = 8.5);
