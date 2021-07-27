@@ -1,9 +1,9 @@
-hinge_length = 40;
+hinge_length = 25;
 door_thickness = 18;
 pin_dia = 6.5;
 offset = 4;
 $fn = 100;
-screw_positions = [10, 30];
+screw_positions = [6, 19];
 screw_radius = 1.5;
 screw_head_radius = 4;
 screw_countersink_depth = 4;
@@ -42,4 +42,4 @@ module hinge(hinge_length = hinge_length, door_thickness = door_thickness, pin_d
     }
 }
 
-hinge();
+hinge(offset = 0);
